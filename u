@@ -1,0 +1,119 @@
+1	## File tree
+2	
+3	```
+4	.agents/
+5	.agents/skills/
+6	.agents/skills/content-collections/
+7	.agents/skills/content-collections/SKILL.md
+8	.agents/skills/netlify-forms-tanstack/
+9	.agents/skills/netlify-forms-tanstack/SKILL.md
+10	.agents/skills/tanstack-start-api-routes/
+11	.agents/skills/tanstack-start-api-routes/SKILL.md
+12	.agents/skills/tanstack-start-identity/
+13	.agents/skills/tanstack-start-identity/SKILL.md
+14	.agents/skills/tanstack-start-loaders/
+15	.agents/skills/tanstack-start-loaders/SKILL.md
+16	.agents/skills/tanstack-start-project-setup/
+17	.agents/skills/tanstack-start-project-setup/SKILL.md
+18	.agents/skills/tanstack-start-routes/
+19	.agents/skills/tanstack-start-routes/SKILL.md
+20	.agents/skills/tanstack-start-server-functions/
+21	.agents/skills/tanstack-start-server-functions/SKILL.md
+22	.agents/skills/tanstack-start-typesafe-routing/
+23	.agents/skills/tanstack-start-typesafe-routing/SKILL.md
+24	.gitignore
+25	AGENTS.md
+26	netlify.toml
+27	package-lock.json
+28	package.json
+29	public/
+30	public/favicon.ico
+31	public/placeholder.png
+32	src/
+33	src/components/
+34	src/components/BuyButton.tsx
+35	src/data/
+36	src/data/products.ts
+37	src/lib/
+38	src/lib/stripe.ts
+39	src/router.tsx
+40	src/routes/
+41	src/routes/__root.tsx
+42	src/routes/checkout/
+43	src/routes/checkout/cancel.tsx
+44	src/routes/checkout/success.tsx
+45	src/routes/index.tsx
+46	src/routes/products/
+47	src/routes/products/$productId.tsx
+48	src/styles.css
+49	tsconfig.json
+50	vite.config.ts
+51	```
+52	
+53	## package.json
+54	
+55	```json
+56	{
+57	  "name": "ecommerce",
+58	  "private": true,
+59	  "type": "module",
+60	  "scripts": {
+61	    "dev": "vite dev --port 3000",
+62	    "build": "vite build"
+63	  },
+64	  "dependencies": {
+65	    "@tailwindcss/vite": "4.2.2",
+66	    "@tanstack/react-router": "1.168.22",
+67	    "@tanstack/react-start": "1.167.41",
+68	    "@tanstack/router-plugin": "1.167.22",
+69	    "highlight.js": "11.11.1",
+70	    "lucide-react": "0.576.0",
+71	    "react": "19.2.6",
+72	    "react-dom": "19.2.6",
+73	    "stripe": "20.4.1",
+74	    "tailwindcss": "4.2.2",
+75	    "vite-tsconfig-paths": "6.1.1",
+76	    "zod": "4.3.6"
+77	  },
+78	  "devDependencies": {
+79	    "@netlify/vite-plugin-tanstack-start": "1.3.15",
+80	    "@tailwindcss/vite": "4.2.2",
+81	    "@types/node": "22.19.19",
+82	    "@types/react": "19.2.15",
+83	    "@types/react-dom": "19.2.3",
+84	    "@vitejs/plugin-react": "5.2.0",
+85	    "lucide-react": "0.576.0",
+86	    "tailwindcss": "4.2.2",
+87	    "typescript": "5.9.3",
+88	    "rimraf": "6.1.3",
+89	    "vite": "7.3.3"
+90	  }
+91	}
+92	
+93	```
+94	
+95	## vite.config.ts
+96	
+97	```ts
+98	import { defineConfig } from 'vite'
+99	import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+100	import viteReact from '@vitejs/plugin-react'
+101	import viteTsConfigPaths from 'vite-tsconfig-paths'
+102	import tailwindcss from '@tailwindcss/vite'
+103	import netlify from '@netlify/vite-plugin-tanstack-start'
+104	
+105	const config = defineConfig({
+106	  plugins: [
+107	    viteTsConfigPaths({
+108	      projects: ['./tsconfig.json'],
+109	    }),
+110	    tailwindcss(),
+111	    netlify(),
+112	    tanstackStart(),
+113	    viteReact(),
+114	  ],
+115	})
+116	
+117	export default config
+118	
+119	```
